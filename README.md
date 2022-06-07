@@ -224,121 +224,136 @@ The API will return three error types when requests fail:
 - Fetches a dictionary of teachers in which the keys are the fields and the value is the corresponding string of the field
 - Request Arguments: None
 - Returns: Returns a list of teacher objects and a success value.
-{
-    "success": true,
-    "teachers": [
-        {
-            "discipline_id": 1,
-            "id": 1,
-            "instagram_account": "@JuanA",
-            "name": "Juan Amor"
-        },
-        {
-            "discipline_id": 1,
-            "id": 2,
-            "instagram_account": "@DanK",
-            "name": "Dan K"
-        }
-    ]
-}
 
+* **Example Response:**
+    ```json
+    {
+        "success": true,
+        "teachers": [
+            {
+                "discipline_id": 1,
+                "id": 1,
+                "instagram_account": "@JuanA",
+                "name": "Juan Amor"
+            },
+            {
+                "discipline_id": 1,
+                "id": 2,
+                "instagram_account": "@DanK",
+                "name": "Dan K"
+            }
+        ]
+    }
+    ```
 
 #### POST '/api/teachers'
 - Creates a new teacher in the database
 - Request Arguments: name, discipline_id and instagram_account
 - Returns: Returns a success value and a list of teacher objects.  
 
-curl --location --request POST 'http://127.0.0.1:5000/teachers' \
---header 'Authorization: Bearer {JWT TOKEN}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "name": "Dan K",
-    "discipline_id": 1,
-    "instagram_account": "@DanK"
+    ```
+    curl --location --request POST 'http://127.0.0.1:5000/teachers' \
+    --header 'Authorization: Bearer {JWT TOKEN}' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "name": "Dan K",
+        "discipline_id": 1,
+        "instagram_account": "@DanK"
+    ```
 
-{
-    "success": true,
-    "teachers": [
-        {
-            "discipline_id": 1,
-            "id": 1,
-            "instagram_account": "@JuanA",
-            "name": "Juan Amor"
-        },
-        {
-            "discipline_id": 1,
-            "id": 2,
-            "instagram_account": "@DanK",
-            "name": "Dan K"
-        }
-    ]
-}
+* **Example Response:**
+    ```json
+    {
+        "success": true,
+        "teachers": [
+            {
+                "discipline_id": 1,
+                "id": 1,
+                "instagram_account": "@JuanA",
+                "name": "Juan Amor"
+            },
+            {
+                "discipline_id": 1,
+                "id": 2,
+                "instagram_account": "@DanK",
+                "name": "Dan K"
+            }
+        ]
+    }
+    ```
 
 #### DELETE '/api/teachers/{teacher_id}'
 - Deletes the teacher of the given ID if it exists.
 - Request Arguments: None
 - Returns: Returns the list of teachers after deletion.
 
-curl --location --request DELETE 'http://127.0.0.1:5000/teachers/2' \
---header 'Authorization: Bearer {JWT TOKEN}'
+    ```
+    curl --location --request DELETE 'http://127.0.0.1:5000/teachers/2' \
+    --header 'Authorization: Bearer {JWT TOKEN}'
+    ```
 
-{
-    "success": true,
-    "teachers": [
-        {
-            "discipline_id": 1,
-            "id": 1,
-            "instagram_account": "@JuanA",
-            "name": "Juan Amor"
-        }
-    ]
-}
-
+    ```json
+    {
+        "success": true,
+        "teachers": [
+            {
+                "discipline_id": 1,
+                "id": 1,
+                "instagram_account": "@JuanA",
+                "name": "Juan Amor"
+            }
+        ]
+    }
+    ```
 
 #### PATCH '/api/teachers/{teacher_id}'
 - Modifies the teacher of the given ID if it exists.
 - Request Arguments: name, discipline_id or instagram_account
 - Returns: Returns the list of teachers after patching.
 
-curl --location --request PATCH 'http://127.0.0.1:5000/teachers/1' \
---header 'Authorization: Bearer {JWT TOKEN}'\
---header 'Content-Type: application/json' \
---data-raw '{
-    "name": "Lucy L",
-    "discipline_id": 1,
-    "instagram_account": "@LucyL"
-}'
+    ```
+    curl --location --request PATCH 'http://127.0.0.1:5000/teachers/1' \
+    --header 'Authorization: Bearer {JWT TOKEN}'\
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "name": "Lucy L",
+        "discipline_id": 1,
+        "instagram_account": "@LucyL"
+    }'
+    ```
 
-{
-    "success": true,
-    "teachers": [
-        {
-            "discipline_id": 1,
-            "id": 1,
-            "instagram_account": "@LucyL",
-            "name": "Lucy L"
-        }
-    ]
-}
-
+    ```json
+    {
+        "success": true,
+        "teachers": [
+            {
+                "discipline_id": 1,
+                "id": 1,
+                "instagram_account": "@LucyL",
+                "name": "Lucy L"
+            }
+        ]
+    }
+    ```
 
 #### GET '/api/disciplines'
 - Fetches a dictionary of disciplines in which the keys are the fields and the value is the corresponding string of the field
 - Request Arguments: None
 - Returns: Returns a list of disciplines objects and a success value.
 
-{
-    "disciplines": [
-        {
-            "id": 1,
-            "name": "Calisthenics"
-        },
-        {
-            "id": 2,
-            "name": "Yoga"
-        }
-    ],
-    "success": true
-}
-
+    ```json
+    {
+        "disciplines": [
+            {
+                "id": 1,
+                "name": "Calisthenics"
+            },
+            {
+                "id": 2,
+                "name": "Yoga"
+            }
+        ],
+        "success": true
+    }
+    ```
 
