@@ -28,6 +28,8 @@ db_drop_and_create_all()
     !!NOTE you can change the database_filename variable to have multiple versions of a database
 '''
 
+
+
 def db_drop_and_create_all():
     db.drop_all()
     db.create_all()
@@ -82,7 +84,6 @@ class Discipline(db.Model):
 
   id = Column(db.Integer, primary_key=True)
   name = Column(String)
-  test = Column(String)
 
   def format(self):
     return {
