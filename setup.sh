@@ -1,5 +1,5 @@
 #!/bin/bash
-export HEROKU_POSTGRESQL_WHITE_URL="postgresql://borjagonzalez@localhost:5432/capstonedb"
+export DATABASE_URL="postgresql://borjagonzalez@localhost:5432/capstonedb"
 export DATABASE_NAME="capstonedb"
 export AUTH0_DOMAIN="dev-9-hxj2sw.us.auth0.com"
 export AUTH0_API_IDENTIFIER="sweat"
