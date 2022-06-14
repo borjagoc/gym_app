@@ -223,6 +223,12 @@ The API will return three error types when requests fail:
 - 422: Not Processable 
 - 500: Internal Server Error
 
+### Deployment
+
+The app is hosted in heroku's cloud server. Please see the link below:
+
+https://blokgymapp.herokuapp.com
+
 
 ### Endpoints
 
