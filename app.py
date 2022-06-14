@@ -18,7 +18,7 @@ def create_app(test_config=None):
     '''
     db_drop_and_create_all()
     
-    #test to delete rr
+
     @app.route('/')
     def get_greeting():
         greeting = "!!!!! Welcome to the best Gym app in the world."
