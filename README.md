@@ -226,6 +226,7 @@ The API will return three error types when requests fail:
 
 ### Endpoints
 
+- GET '/api/'
 - GET '/api/teachers'
 - POST '/api/teachers'
 - DELETE '/api/teachers/{teacher_id}'
@@ -235,6 +236,15 @@ The API will return three error types when requests fail:
 - GET '/api/sessions'
 - POST '/api/sessions'
 
+
+#### GET '/api/'
+
+- This is the home page where you will receive the following welcome message:
+
+    ```
+    !!!!! Welcome to the best Gym app in the world.
+
+    ```
 
 #### GET '/api/teachers'
 - Fetches a dictionary of teachers in which the keys are the fields and the value is the corresponding string of the field
@@ -404,6 +414,73 @@ The API will return three error types when requests fail:
                 "name": "Boxing"
             }
         ],
+        "success": true
+    }
+    ```
+
+#### GET '/api/sessions'
+- Fetches a dictionary of sessions in which the keys are the fields and the value is the corresponding string of the field
+- Request Arguments: None
+- Returns: Returns a list of disciplines objects and a success value.
+
+    ```json
+    {
+        "sessions": [
+            {
+            "discipline_id": 2, 
+            "gym_id": 1, 
+            "id": 1, 
+            "length_in_minutes": 90, 
+            "name": "Yoga with Francesco on Wed", 
+            "start_time": "Wed, 01 Jun 2022 06:30:00 GMT", 
+            "teacher_id": 2
+            }
+        ], 
+        "success": true
+    }
+    ```
+
+#### POST '/api/sessions'
+- Creates a new session in the database
+- Request Arguments: name, discipline_id, gym_id, teacher_id, length_in_minutes, start_time
+- Returns: Returns a success value and a list of session objects.  
+
+    ```
+    curl --location --request POST 'http://127.0.0.1:5000/sessions' \
+    --header 'Authorization: Bearer {JWT TOKEN}' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "name": "Calisthenics with Dan on Monday", 
+        "discipline_id": 1, 
+        "gym_id": 1, 
+        "length_in_minutes": 60, 
+        "start_time": "Mon, 20 Jun 2022 17:20:00 GMT", 
+        "teacher_id": 1
+    }'
+    ```
+
+    ```json
+    {
+        "sessions": [
+            {
+            "discipline_id": 2, 
+            "gym_id": 1, 
+            "id": 1, 
+            "length_in_minutes": 90, 
+            "name": "Yoga with Francesco on Wed", 
+            "start_time": "Wed, 01 Jun 2022 06:30:00 GMT", 
+            "teacher_id": 2
+            }, 
+            {
+            "discipline_id": 1, 
+            "gym_id": 1, 
+            "id": 2, 
+            "length_in_minutes": 60, 
+            "name": "Calisthenics with Dan on Monday", 
+            "start_time": "Mon, 20 Jun 2022 17:20:00 GMT", 
+            "teacher_id": 1
+            }
+        ], 
         "success": true
     }
     ```
