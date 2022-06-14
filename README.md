@@ -85,12 +85,29 @@ export MANAGERS_TOKEN="xxxx" #See instructions below
 export TEACHERS_TOKEN="xxxx" #See instructions below
 ```
 
+
 ##### Set JWT Tokens in `setup.sh`
 
 Use the following link to create users and sign them in. This way, you can generate 
 
 ```
-https://{{YOUR_DOMAIN}}/authorize?audience={{API_IDENTIFIER}}&response_type=token&client_id={{YOUR_CLIENT_ID}}&redirect_uri={{YOUR_CALLBACK_URI}}
+https://dev-9-hxj2sw.us.auth0.com/authorize?audience=sweat&response_type=token&client_id=opwmj0iP4Yk3Hz5PlC1l1Uf0cSBlXnWO&redirect_uri=https://127.0.0.1:8080/callback
+```
+
+The below credentials can be used to log in with the different roles:
+
+- Manager
+
+```
+    email: borjathemanager@gmail.com
+    password: borjathemanager_123
+```
+
+- Teacher
+
+```
+    email: dantheteacher@gmail.com
+    password: dantheteacher_123
 ```
 
 
@@ -157,10 +174,9 @@ For more details [look at the documentation (31.1.1.2. Connection URIs)](https:/
 5.  To run the server locally, execute:
 
     ```bash
-    export FLASK_APP=flaskr
     export FLASK_DEBUG=True
     export FLASK_ENVIRONMENT=debug
-    flask run --reload
+    python3 app.py
     ```
 
     Optionally, you can use `run.sh` script.
@@ -259,6 +275,7 @@ The API will return three error types when requests fail:
         "name": "Dan K",
         "discipline_id": 1,
         "instagram_account": "@DanK"
+    }'
     ```
 
 * **Example Response:**
@@ -357,3 +374,36 @@ The API will return three error types when requests fail:
     }
     ```
 
+#### POST '/api/disciplines'
+- Creates a new discipline in the database
+- Request Arguments: name
+- Returns: Returns a success value and a list of discipline objects.  
+
+    ```
+    curl --location --request POST 'http://127.0.0.1:5000/disciplines' \
+    --header 'Authorization: Bearer {JWT TOKEN}' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "name": "Boxing"
+    }'
+    ```
+
+    ```json
+    {
+        "disciplines": [
+            {
+                "id": 1,
+                "name": "Calisthenics"
+            },
+            {
+                "id": 2,
+                "name": "Yoga"
+            },
+            {
+                "id": 3,
+                "name": "Boxing"
+            }
+        ],
+        "success": true
+    }
+    ```
