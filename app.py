@@ -14,9 +14,9 @@ def create_app(test_config=None):
 
     '''
     Only to initialise the database with dummy data
-    
-    '''
     db_drop_and_create_all()
+    '''
+    
     
 
     @app.route('/')
