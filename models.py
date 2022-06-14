@@ -82,6 +82,7 @@ class Discipline(db.Model):
 
   id = Column(db.Integer, primary_key=True)
   name = Column(String)
+  test = Column(String)
 
   def format(self):
     return {
